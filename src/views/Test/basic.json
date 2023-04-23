@@ -1,0 +1,5 @@
+{
+  "type": "page",
+  "title": "~~基础使用演示~~",
+  "visibleOn": "${radios == 'basic'}"
+}

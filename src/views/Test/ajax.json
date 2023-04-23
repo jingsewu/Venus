@@ -1,0 +1,6 @@
+{
+  "type": "page",
+  "body": "Ajax请求日期：${date}",
+  "initApi": "/api/amis-mock/mock2/page/initData",
+  "visibleOn": "${radios == 'ajax'}"
+}
