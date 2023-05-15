@@ -1,5 +1,6 @@
 /* @jsxImportSource @emotion/react */
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
@@ -12,6 +13,8 @@ import {
   SmileOutlined,
   DownOutlined,
 } from "@ant-design/icons";
+
+import dashboard from "@/router/dashboard.tsx";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -76,7 +79,7 @@ const applications: MenuProps["items"] = [
   },
 ];
 
-const siderMenus: MenuProps["items"] = [
+let siderMenus: MenuProps["items"] = [
   UserOutlined,
   LaptopOutlined,
   NotificationOutlined,
@@ -104,6 +107,14 @@ const siderMenus: MenuProps["items"] = [
     }),
   };
 });
+
+const realRouter = dashboard.map((item) => ({
+  // ...item,
+  key: item.path,
+  icon: item.icon,
+  label: <Link to={item.path}>{item.title}</Link>,
+}));
+siderMenus = realRouter.concat(...siderMenus);
 
 const menuItems = [
   {
@@ -214,7 +225,12 @@ const Home: React.FC = () => {
             items={siderMenus}
           />
         </Sider>
-        <Layout css={{ padding: "0 24px 24px" }}>
+        <Layout
+          css={{
+            // overflowY: "hidden",
+            padding: "0 24px 24px",
+          }}
+        >
           {/* <Sider>
           </Sider> */}
           <Breadcrumb
@@ -237,13 +253,13 @@ const Home: React.FC = () => {
           />
           <Content
             css={{
-              padding: 24,
+              padding: "6px 12px",
               margin: 0,
               minHeight: 280,
               background: colorBgContainer,
             }}
           >
-            Content
+            <Outlet />
           </Content>
         </Layout>
       </Layout>

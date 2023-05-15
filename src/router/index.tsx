@@ -5,11 +5,14 @@ import ErrorPage from "@/views/ErrorPage";
 import Home from "@/views/Home";
 import Test from "@/views/Test";
 
+import dashboard from "./dashboard.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+    children: [...dashboard],
   },
   {
     path: "/home",
