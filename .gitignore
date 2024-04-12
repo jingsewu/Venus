@@ -27,4 +27,6 @@ dist-ssr
 # 敏感代码检测
 pre-commit.js
 
-aaa.html
+/aaa.html
+/ccc.h
+package-lock.json
